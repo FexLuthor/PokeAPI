@@ -15,3 +15,4 @@ Coding Practice: A good opportunity to practice async WebRequests and WPF basics
 Create a WPF application where you can search the PokéAPI for a specific Pokémon by name. Display your search result. Show the name, all abilities, type and the picture of the Pokémon.
 If the Pokémon is not found, display a corresponding message.
 By clicking on the picture, you should be able to toggle between Shiny variant and Normal.
+Test
