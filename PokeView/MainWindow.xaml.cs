@@ -34,6 +34,8 @@ namespace PokeView
             SystemMessage.Text = "";
             PokeAbilities.Text = "";
             PokeType.Text = "";
+            PokeName.Content = "";
+            
             Pokemon = PokeInput.Text.ToLower();
             PokeModel PokemonDat = new PokeModel();
             PokemonDat = await Request.PokeCall(Pokemon);
@@ -73,6 +75,9 @@ namespace PokeView
             else
             {
                 SystemMessage.Text = "Pokémon not found. Please reenter your Pokémons name.";
+                PokeNormal.Source = new BitmapImage(new Uri("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"));
+                //PokeShiny.Source = new BitmapImage(new Uri("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"));
+
             }
 
             PokeInput.Clear();
