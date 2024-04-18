@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using static System.Net.WebRequestMethods;
 
 namespace PokeView
 {
@@ -31,6 +32,8 @@ namespace PokeView
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             SystemMessage.Text = "";
+            PokeAbilities.Text = "";
+            PokeType.Text = "";
             Pokemon = PokeInput.Text.ToLower();
             PokeModel PokemonDat = new PokeModel();
             PokemonDat = await Request.PokeCall(Pokemon);
@@ -69,11 +72,13 @@ namespace PokeView
 
             else
             {
-                SystemMessage.Text = "Pokémon not found. Please check and reenter your Pokémons name.";
+                SystemMessage.Text = "Pokémon not found. Please reenter your Pokémons name.";
             }
 
             PokeInput.Clear();
 
         }
+
+        
     }
 }
