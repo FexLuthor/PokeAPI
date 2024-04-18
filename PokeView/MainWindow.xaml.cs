@@ -61,12 +61,15 @@ namespace PokeView
                         PokeAbilities.Text += ", ";
                     }
                 }
-                
+
                 //PokeShiny.Source = new BitmapImage(new Uri(PokemonDat.ShinyUrl)); //PokeShiny wird innerhalb des ToggleButtons nicht gefunden
+                //PokeNormal.Source = new BitmapImage(new Uri(PokemonDat.PictureUrl));
 
-                
-                PokeNormal.Source = new BitmapImage(new Uri(PokemonDat.PictureUrl));
-
+                DataContext = new MainViewModel
+                {
+                    Image1 = new BitmapImage(new Uri(PokemonDat.PictureUrl)),
+                    Image2 = new BitmapImage(new Uri(PokemonDat.ShinyUrl))
+                };
 
             }
 

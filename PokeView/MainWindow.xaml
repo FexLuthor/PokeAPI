@@ -102,38 +102,14 @@
                 <!-- End of Grid 3. -->
 
                 <!-- Grid 2, Row 2, Column 2: Image of the Pokémon with a toggled switch between normal and shiny version. -->
-                <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <ToggleButton Height="200" Width="200" >
-                        <ToggleButton.Style>
-                            <Style TargetType="ToggleButton">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="ToggleButton">
-                                            <Border Background="Transparent" BorderThickness="1" BorderBrush="Transparent">
-                                                <ContentPresenter Name="content"/>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                                    <Setter TargetName="content" Property="ContentPresenter.Content">
-                                                        <Setter.Value>
-                                                            <Image Source="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"/>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ToggleButton.Style>
-                        <Image x:Name="PokeNormal"/>
+                    <ToggleButton x:Name="toggleButton" IsChecked="{Binding IsImage1Visible, Mode=TwoWay}" Background="Transparent" BorderBrush="Transparent" Grid.Row="1" Grid.Column="1" Height="200" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Image Source="{Binding ImageSource}" Width="200" Height="200" />
                     </ToggleButton>
-                </Grid>
-                <!-- End of the Image Grid. -->
+                
 
             </Grid>
             <!-- End of Grid 2. -->
-
+            
             <!-- Grid 1, Row 3: Output of an error message if Pokémons name could not be found. -->
             <TextBlock x:Name="SystemMessage" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" FontWeight="Bold" FontSize="20">
               
