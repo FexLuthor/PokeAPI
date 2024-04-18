@@ -73,7 +73,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!-- Grid 3, Row 1, Column 2: Output of the Pokémons name. -->
-                    <Label x:Name="PokeName" Grid.Row="0" Grid.Column="1" FontSize="25" HorizontalAlignment="Center" FontWeight="Black" Foreground="DarkBlue" VerticalAlignment="Center">
+                    <Label x:Name="PokeName" Grid.Row="0" Grid.Column="1" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="DarkBlue" VerticalAlignment="Center">
 
                     </Label>
 
@@ -85,7 +85,7 @@
 
                     <!-- Grid 3, Row 2, Column 2: Output of the Type.-->
                     <TextBlock x:Name="PokeType" Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="Navy" Background="MintCream" Width="300">
-                      Types...
+                      
                     </TextBlock>
 
                     <!-- The Pokémons abilities. -->
@@ -96,7 +96,7 @@
 
                     <!-- Grid 3, Row 3, Coluumn 2: Output of the abilities. -->
                     <TextBlock x:Name="PokeAbilities" Grid.Row="2" Grid.Column="2" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="Navy" Background="MintCream" Width="300">
-                      Abilities...
+                      
                     </TextBlock>
                 </Grid>
                 <!-- End of Grid 3. -->
@@ -116,7 +116,7 @@
                                                 <Trigger Property="ToggleButton.IsChecked" Value="True">
                                                     <Setter TargetName="content" Property="ContentPresenter.Content">
                                                         <Setter.Value>
-                                                            <Image Source="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"/>
+                                                            <Image x:Name="PokeShiny"/>
                                                         </Setter.Value>
                                                     </Setter>
                                                 </Trigger>
@@ -126,7 +126,7 @@
                                 </Setter>
                             </Style>
                         </ToggleButton.Style>
-                        <Image Source="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"/>
+                        <Image x:Name="PokeNormal"/>
                     </ToggleButton>
                 </Grid>
                 <!-- End of the Image Grid. -->
@@ -135,8 +135,8 @@
             <!-- End of Grid 2. -->
 
             <!-- Grid 1, Row 3: Output of an error message if Pokémons name could not be found. -->
-            <TextBlock Name="SystemMessage" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" FontWeight="Bold" FontSize="20">
-              Pokémon not found. Please check and reenter your Pokémons name.
+            <TextBlock x:Name="SystemMessage" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" FontWeight="Bold" FontSize="20">
+              
                 <TextBlock.Foreground>
                     Crimson
                 </TextBlock.Foreground>
