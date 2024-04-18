@@ -16,9 +16,19 @@ namespace PokeView
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int clickeditems;
+        private string Pokemon = "";
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Pokemon = PokeInput.Text;
+            PokeName.Content = Pokemon;
+            PokeInput.Clear();
         }
     }
 }

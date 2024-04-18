@@ -6,7 +6,145 @@
         xmlns:local="clr-namespace:PokeView"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Hello" />
-    </Grid>
+    <DockPanel Background="LightCyan">
+        <Grid DockPanel.Dock="Top">
+            <!-- Main Grid (Grid 1). Has three rows that store all elements. -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <!-- Row 1. Holding the PokéAPI Logo. -->
+                <RowDefinition />
+                <!-- Row 2. Holding the Search Bar and Results in another Grid. -->
+                <RowDefinition Height="75"/>
+                <!-- Row 3. Holding the Error Line. -->
+            </Grid.RowDefinitions>
+
+            <!-- Grid 1, Row 1: PokéAPI Logo. -->
+            <Image Source="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" Height="80" Width="200" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <!-- Grid 1, Row 2. Search Bar and Results. -->
+            <Grid DockPanel.Dock="Bottom" Width="800" Height="240" Grid.Row="1" VerticalAlignment="Top">
+                <!-- First SubGrid (Grid 2) -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="550"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Grid 2, Row 1, Column 1: Text Box for Input of Pokémon Name from User. -->
+                <TextBox 
+                  x:Name="PokeInput" 
+                  Height="40" Width="400" 
+                  Background="Cornsilk" 
+                  BorderBrush="SteelBlue" BorderThickness="2" 
+                  Grid.Row="0" Grid.Column="0" 
+                  HorizontalAlignment="Right" VerticalAlignment="Top" 
+                  VerticalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <!-- Grid 2, Row 1, Column 2: Button to initiate the Search for the Input from Unser. -->
+                <Button x:Name="SearchButton" Click="SearchButton_Click" Height="40" Width="100" Background="Navy" BorderBrush="MidnightBlue" BorderThickness="2"  FontWeight="SemiBold" FontSize="18" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White">
+                    Search
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <!-- Grid 2, Row 2, Column 1: Output of the Pokémons Name, Types and Abilities. -->
+                <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <!-- Second SubGrid (Grid 3) -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Grid 3, Row 1, Column 2: Output of the Pokémons name. -->
+                    <Label x:Name="PokeName" Grid.Row="0" Grid.Column="1" FontSize="25" HorizontalAlignment="Center" FontWeight="Black" Foreground="DarkBlue" VerticalAlignment="Center">
+
+                    </Label>
+
+                    <!-- The Pokémons type. -->
+                    <!-- Grid 3, Row 2, Column 1: Header for the output of the Pokémons type. -->
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Foreground="Navy" Margin="0,0,20,0">
+                      Type
+                    </TextBlock>
+
+                    <!-- Grid 3, Row 2, Column 2: Output of the Type.-->
+                    <TextBlock x:Name="PokeType" Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="Navy" Background="MintCream" Width="300">
+                      Types...
+                    </TextBlock>
+
+                    <!-- The Pokémons abilities. -->
+                    <!-- Grid 3, Row 3, Column 1: Header for the output of the Pokémons abilities. -->
+                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Foreground="Navy" Margin="0,0,20,0">
+                      Abilities
+                    </TextBlock>
+
+                    <!-- Grid 3, Row 3, Coluumn 2: Output of the abilities. -->
+                    <TextBlock x:Name="PokeAbilities" Grid.Row="2" Grid.Column="2" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="Navy" Background="MintCream" Width="300">
+                      Abilities...
+                    </TextBlock>
+                </Grid>
+                <!-- End of Grid 3. -->
+
+                <!-- Grid 2, Row 2, Column 2: Image of the Pokémon with a toggled switch between normal and shiny version. -->
+                <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <ToggleButton Height="200" Width="200" >
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="Transparent" BorderThickness="1" BorderBrush="Transparent">
+                                                <ContentPresenter Name="content"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                                    <Setter TargetName="content" Property="ContentPresenter.Content">
+                                                        <Setter.Value>
+                                                            <Image Source="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Image Source="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"/>
+                    </ToggleButton>
+                </Grid>
+                <!-- End of the Image Grid. -->
+
+            </Grid>
+            <!-- End of Grid 2. -->
+
+            <!-- Grid 1, Row 3: Output of an error message if Pokémons name could not be found. -->
+            <TextBlock Name="SystemMessage" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" FontWeight="Bold" FontSize="20">
+              Pokémon not found. Please check and reenter your Pokémons name.
+                <TextBlock.Foreground>
+                    Crimson
+                </TextBlock.Foreground>
+            </TextBlock>
+
+
+        </Grid>
+        <!-- End of Grid 1. -->
+
+    </DockPanel>
 </Window>
