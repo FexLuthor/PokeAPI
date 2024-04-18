@@ -116,7 +116,7 @@
                                                 <Trigger Property="ToggleButton.IsChecked" Value="True">
                                                     <Setter TargetName="content" Property="ContentPresenter.Content">
                                                         <Setter.Value>
-                                                            <Image x:Name="PokeShiny"/>
+                                                            <Image Source="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"/>
                                                         </Setter.Value>
                                                     </Setter>
                                                 </Trigger>

@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -16,9 +17,10 @@ namespace PokeView
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+ 
+    
     public partial class MainWindow : Window
     {
-        private int clickeditems;
         private string Pokemon = "";
         public MainWindow()
         {
@@ -32,6 +34,7 @@ namespace PokeView
             Pokemon = PokeInput.Text.ToLower();
             PokeModel PokemonDat = new PokeModel();
             PokemonDat = await Request.PokeCall(Pokemon);
+
             if (PokemonDat.OnlineSuccess)
             {
 
@@ -55,24 +58,20 @@ namespace PokeView
                         PokeAbilities.Text += ", ";
                     }
                 }
-                Image BildShiny = new Image();
-                BildShiny.Source = new BitmapImage(new Uri(PokemonDat.ShinyUrl));
-                PokeShiny.Source = BildShiny.Source;
+                
+                //PokeShiny.Source = new BitmapImage(new Uri(PokemonDat.ShinyUrl)); //PokeShiny wird innerhalb des ToggleButtons nicht gefunden
 
-                Image BildNormal = new Image();
-                BildNormal.Source = new BitmapImage(new Uri(PokemonDat.PictureUrl));
-                PokeNormal.Source = BildNormal.Source;
-
-               
-
-
+                
+                PokeNormal.Source = new BitmapImage(new Uri(PokemonDat.PictureUrl));
 
 
             }
+
             else
             {
                 SystemMessage.Text = "Pokémon not found. Please check and reenter your Pokémons name.";
             }
+
             PokeInput.Clear();
 
         }
