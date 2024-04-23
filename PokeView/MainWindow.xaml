@@ -14,7 +14,7 @@
                 <!-- Row 1. Holding the PokéAPI Logo. -->
                 <RowDefinition />
                 <!-- Row 2. Holding the Search Bar and Results in another Grid. -->
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="65"/>
                 <!-- Row 3. Holding the Error Line. -->
             </Grid.RowDefinitions>
 
